@@ -1,4 +1,7 @@
-# Line Bot Lite [![Build Status](https://travis-ci.org/elct9620/line-bot.svg?branch=master)](https://travis-ci.org/elct9620/line-bot)
+# Line Bot Lite
+
+[![Build Status](https://travis-ci.org/elct9620/line-bot.svg?branch=master)](https://travis-ci.org/elct9620/line-bot)
+[![Coverage Status](https://coveralls.io/repos/github/elct9620/line-bot/badge.svg?branch=master)](https://coveralls.io/github/elct9620/line-bot?branch=master)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/line/bot`. To experiment with that code, run `bin/console` for an interactive prompt.
 
