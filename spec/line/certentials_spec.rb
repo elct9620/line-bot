@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'line/bot/certentials'
 
 describe Line::Bot::Certentials do
 
@@ -36,6 +35,5 @@ describe Line::Bot::Certentials do
     signature = "tVuK4fnDBkvzHM89T4uoyRCZvqxk4Pq1bJ1Ph8eioUI="
     expect(cert.validate_signature?(body, signature)).to be_truthy
   end
-
 
 end

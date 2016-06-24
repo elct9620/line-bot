@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'line/bot/client'
 
 describe Line::Bot do
   it 'has a version number' do
