@@ -11,12 +11,12 @@ module Line
 
       def self.get(url, header = {})
         uri = URI(url)
-        self.http(uri).get(uri.requrest_uri, header)
+        self.http(uri).get(uri.request_uri, header)
       end
 
       def self.post(url, payload, header = {})
         uri = URI(url)
-        self.http(uri).post(uri.requrest_uri, payload, header)
+        self.http(uri).post(uri.request_uri, payload, header)
       end
     end
   end
