@@ -9,6 +9,19 @@ module Line
         yield(self) if block_given?
       end
 
+      def send_text(to_mid, message)
+        request = Request.new do |config|
+          config.to_mid = to_mid
+          config.certentials = @certentials
+          config.endpoint = API::ENDPOINT
+          config.endpoint_path = "/events"
+          config.message = message
+          config.event_type = Line::Bot::EventType::MESSAGE
+        end
+
+        request.post
+      end
+
     end
   end
 end
