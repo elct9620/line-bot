@@ -1,18 +1,17 @@
 # Line Bot Lite
 
+[![Rubygems](https://img.shields.io/gem/v/line-bot-lite.svg)](https://rubygems.org/gems/line-bot-lite)
 [![Build Status](https://travis-ci.org/elct9620/line-bot.svg?branch=master)](https://travis-ci.org/elct9620/line-bot)
 [![Coverage Status](https://coveralls.io/repos/github/elct9620/line-bot/badge.svg?branch=master)](https://coveralls.io/github/elct9620/line-bot?branch=master)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/line/bot`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Yet another line bot SDK implement. This version use all ruby builtin library and without dependencies problem like `rack` version is lock down to `>= 0`
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'line-bot'
+gem 'line-bot-lite'
 ```
 
 And then execute:
@@ -21,11 +20,46 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install line-bot
+    $ gem install line-bot-lite
 
 ## Usage
 
-TODO: Write usage instructions here
+Current only implemented `send_text` method, and still need refactor to support all types message.
+
+```ruby
+require 'line/bot'
+require 'json'
+
+def client
+  @client ||= Line::Bot::Client.new(
+    channel_id: ENV['LINE_CHANNEL_ID'],
+    channel_secret: ENV['LINE_CHANNEL_SECRET'],
+    channel_mid: ENV['LINE_CHANNEL_MID']
+  )
+end
+
+post '/callback' do
+  signature = request.env['HTTP_X_LINE_CHANNELSIGNATURE']
+  unless client.certentials.validate_signature?(request.body.read, signature)
+    error 400 do 'Bad Request' end
+  end
+
+  request.body.rewind
+  json = JSON.parse(request.body.read)
+  result = json['result']
+
+  result.each do |message|
+    case message['eventType']
+    when Line::Bot::Receive::EventType::MESSAGE.to_s
+      client.send_text(message['content']['from'], message['content']['text'])
+    end
+  end
+
+  "OK"
+end
+```
+
+WARNING: The API will changed until it stable, and next release will provide response parser helper.
 
 ## Development
 
@@ -35,5 +69,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/line-bot. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/elct9620/line-bot. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
