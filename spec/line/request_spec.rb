@@ -14,7 +14,6 @@ describe Line::Bot::Request do
       config.endpoint = "https://example.com/v1"
       config.endpoint_path = "/events"
       config.to_mid = "user1234"
-      config.to_channel_id = 1383378250
       config.message = "Test Message"
     end
   }
@@ -31,7 +30,7 @@ describe Line::Bot::Request do
   it 'should generate text message payload' do
     payload = {
       to: request.to,
-      toChannel: 1383378250,
+      toChannel: Line::Bot::API::MESSAGE_CHANNEL_ID,
       eventType: "138311608800106203",
       content: {
         contentType: 1,

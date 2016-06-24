@@ -2,7 +2,7 @@ module Line
   module Bot
     class Request
 
-      attr_accessor :to_mid, :to_channel_id, :message, :certentials, :endpoint, :endpoint_path
+      attr_accessor :to_mid, :message, :certentials, :endpoint, :endpoint_path
 
       def initialize
         yield(self) if block_given?
@@ -15,7 +15,7 @@ module Line
       def payload
         {
           to: to,
-          toChannel: to_channel_id,
+          toChannel: API::MESSAGE_CHANNEL_ID, # Fixed value
           eventType: "138311608800106203",
           content: {
             contentType: 1,
