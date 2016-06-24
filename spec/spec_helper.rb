@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'coveralls'
-require 'line/bot'
 
+require 'coveralls'
 Coveralls.wear!
+
+require 'line/bot'
