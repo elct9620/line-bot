@@ -35,8 +35,13 @@ module Line
         return if @data.nil?
         case @data['contentType']
         when Message::ContentType::TEXT
-           return Message::Text.new(text: @data['text'])
-        # TODO: Implement other type message type
+          return Message::Text.new(text: @data['text'])
+        when Message::ContentType::IMAGE
+          return Message::Image.new(
+            image_url: @data['originalContentUrl'],
+            preview_url: @data['previewImageUrl']
+          )
+          # TODO: Implement other type message type
         end
       end
 

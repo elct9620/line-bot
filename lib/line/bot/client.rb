@@ -13,6 +13,10 @@ module Line
         send_message(to_mid, Message::Text.new(text: message))
       end
 
+      def send_image(to_mid, image_url, preview_url)
+        send_message(to_mid, Message::Image.new( image_url: image_url, preview_url: preview_url) )
+      end
+
       def send_message(to_mid, message)
         request = Request.new do |config|
           config.to_mid = to_mid

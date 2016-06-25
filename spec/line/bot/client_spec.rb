@@ -36,4 +36,5 @@ describe Line::Bot::Client do
   end
 
   it 'should send text message to api server'
+  it 'should send image message to api server'
 end
