@@ -10,6 +10,9 @@ describe Line::Bot::Response do
       result: [
         {
           from: "u123456",
+          fromChannel: 123456,
+          to: ["u123457"],
+          toChannel: 234567,
           eventType: Line::Bot::Receive::EventType::MESSAGE.to_s,
           content: text_message.content
         }
@@ -29,6 +32,14 @@ describe Line::Bot::Response do
   it 'should define event type' do
     expect(response.first.event_type).not_to be_a(String)
     expect(response.first.event_type).to eq(Line::Bot::Receive::EventType::MESSAGE)
+  end
+
+  it 'should have from channel' do
+    expect(response.first.from_channel_id).not_to be_nil
+  end
+
+  it 'should have to channel' do
+    expect(response.first.to_channel_id).not_to be_nil
   end
 
   it 'should have valid event content' do

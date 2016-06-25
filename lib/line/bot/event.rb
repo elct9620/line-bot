@@ -2,12 +2,16 @@ module Line
   module Bot
     class Event
 
-      attr_reader :event_type, :content
+      attr_reader :event_type, :content, :id, :from_mid, :to_mid, :from_channel_id, :to_channel_id
 
       def initialize(options = {})
         options.each do |key, value|
           instance_variable_set("@#{key}", value)
         end
+
+        @id ||= @data['id']
+        @from_mid ||= @data['from']
+        @to_mid ||= @data['to']
 
         @content = parse_content
       end

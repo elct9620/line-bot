@@ -27,7 +27,9 @@ module Line
 
         Event.new(
           event_type: type,
-          data: event_data['content']
+          data: event_data['content'],
+          from_channel_id: event_data['fromChannel'],
+          to_channel_id: event_data['toChannel']
         )
       end
     end
