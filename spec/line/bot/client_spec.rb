@@ -35,6 +35,5 @@ describe Line::Bot::Client do
     expect(client_from_block.certentials).to eq(cert)
   end
 
-  it 'should send message to line server'
-
+  it 'should send text message to api server'
 end
