@@ -33,7 +33,7 @@ describe Line::Bot::Certentials do
   it 'should can check signature' do
     body = "Some data should be hashed"
     signature = "tVuK4fnDBkvzHM89T4uoyRCZvqxk4Pq1bJ1Ph8eioUI="
-    expect(cert.validate_signature?(body, signature)).to be_truthy
+    expect(cert.validate_signature(body, signature)).to be_truthy
   end
 
 end

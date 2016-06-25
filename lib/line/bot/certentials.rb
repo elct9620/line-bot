@@ -26,7 +26,7 @@ module Line
         payload.values.all?
       end
 
-      def validate_signature?(body = "", channel_signature)
+      def validate_signature(body = "", channel_signature)
         return false unless !channel_signature.nil? && valid?
 
         hash = OpenSSL::HMAC::digest(OpenSSL::Digest::SHA256.new, channel_secret, body)
