@@ -3,6 +3,7 @@
 [![Rubygems](https://img.shields.io/gem/v/line-bot-lite.svg)](https://rubygems.org/gems/line-bot-lite)
 [![Build Status](https://travis-ci.org/elct9620/line-bot.svg?branch=master)](https://travis-ci.org/elct9620/line-bot)
 [![Coverage Status](https://coveralls.io/repos/github/elct9620/line-bot/badge.svg?branch=master)](https://coveralls.io/github/elct9620/line-bot?branch=master)
+[![Code Climate](https://codeclimate.com/github/elct9620/line-bot/badges/gpa.svg)](https://codeclimate.com/github/elct9620/line-bot)
 
 Yet another line bot SDK implement. This version use all ruby builtin library and without dependencies problem like `rack` version is lock down to `>= 0`
 
