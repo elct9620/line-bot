@@ -14,9 +14,12 @@ describe Line::Bot::Request do
       config.endpoint = "https://example.com/v1"
       config.endpoint_path = "/events"
       config.to_mid = "user1234"
-      config.message = "Test Message"
+      config.message = text_message
       config.event_type = Line::Bot::EventType::MESSAGE
     end
+  }
+  let(:text_message) {
+    Line::Bot::Message::Text.new(text: "Test Message")
   }
 
   it 'should have valid header' do
@@ -34,8 +37,8 @@ describe Line::Bot::Request do
       toChannel: Line::Bot::API::MESSAGE_CHANNEL_ID,
       eventType: Line::Bot::EventType::MESSAGE.to_s,
       content: {
-        contentType: 1,
-        toType: 1,
+        contentType: Line::Bot::Message::ContentType::TEXT,
+        toType: Line::Bot::Message::RecipientType::USER,
         text: "Test Message"
         }
     }.to_json

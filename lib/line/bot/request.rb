@@ -17,11 +17,7 @@ module Line
           to: to,
           toChannel: API::MESSAGE_CHANNEL_ID, # Fixed value
           eventType: event_type.to_s,
-          content: {
-            contentType: 1,
-            toType: 1,
-            text: message
-          }
+          content: message.content
 
         }.to_json
       end
