@@ -35,6 +35,9 @@ describe Line::Bot::Client do
     expect(client_from_block.certentials).to eq(cert)
   end
 
+  it 'should get image from api server'
+  it 'should get preview image from api server'
+
   it 'should send text message to api server'
   it 'should send image message to api server'
 end

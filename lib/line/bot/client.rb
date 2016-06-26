@@ -9,6 +9,12 @@ module Line
         yield(self) if block_given?
       end
 
+      def get_image(id, preview = false)
+        url = "#{API::ENDPOINT}/bot/message/#{id}/content"
+        url = "#{url}/preview" if preview
+        HTTP.get(url, @certentials.header)
+      end
+
       def send_text(to_mid, message)
         send_message(to_mid, Message::Text.new(text: message))
       end
