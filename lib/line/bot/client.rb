@@ -12,7 +12,8 @@ module Line
       def get_image(id, preview = false)
         url = "#{API::ENDPOINT}/bot/message/#{id}/content"
         url = "#{url}/preview" if preview
-        HTTP.get(url, @certentials.header)
+        header = @certentials.payload.inject({}) { |h, (k, v)| h[k] = v.to_s; h }
+        HTTP.get(url, header)
       end
 
       def send_text(to_mid, message)
